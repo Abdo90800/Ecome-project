@@ -62,19 +62,19 @@ const ProductSlider = ({ data }) => {
     <Container className="">
       <Box sx={{ margin: "10px" }}>
         <Slider {...settings}>
-          {data?.data?.map((product, index) => (
+          {data.map((product, index) => (
             <div key={index} className="p-4 w-80 rounded-2xl">
               <Card
                 style={{
                   width: "100%",
-                  height: "400px",
+                  height: "450px",
                   objectFit: "contain",
                   borderRadius: "10px",
                 }}
                 className="p-2"
               >
                 <img
-                  src={`http://localhost:1337${product.attributes.image.data[0].attributes.url}`}
+                  src={product.image}
                   alt={product.title}
                   style={{
                     objectFit: "contain",
@@ -84,18 +84,18 @@ const ProductSlider = ({ data }) => {
                 />
                 <CardContent className="text-center">
                   <Typography gutterBottom variant="h6" component="div">
-                    {product.attributes.title}
+                    {product.title}
                   </Typography>
 
                   <Box className="text-center">
                     <span>
                       <RatingCard
-                        Rat={product.attributes.rating}
-                        reviews={product.attributes.reviews}
+                        Rat={product.rating.rat}
+                        reviews={product.rating.count}
                       />
                     </span>
                     <Typography className="text-red-700" variant="h6">
-                      ${product.attributes.price}
+                      ${product.price}
                     </Typography>
                   </Box>
                 </CardContent>

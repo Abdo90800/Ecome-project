@@ -33,31 +33,28 @@ function VewDialog({ open, handleClose, product, handleAddToCart }) {
       }}
     >
       <Stack direction={"row"} spacing={2}>
-        <Box sx={{ border: "1px solid red", width: "50%" }}>
+        <Box sx={{ width: "50%" }}>
           <img
-            src={`http://localhost:1337${product.attributes.image.data[0].attributes.url}`}
+            src={product.image}
             alt={product.title}
             style={{ width: "100%", height: "auto" }}
           />
         </Box>
         <Box sx={{ width: "50%", padding: "16px" }}>
           <Typography variant="h4" component="div" className="font-bold">
-            {product.attributes.title}
+            {product.title}
           </Typography>
           <Typography variant="body1" sx={{ marginY: "8px" }}>
             <span>
-              <RatingCard Rat={product.attributes.rating} reviews={product.attributes.reviews} />
+              <RatingCard Rat={product.rating.rate} reviews={product.rating.count} />
             </span>
           </Typography>
-          <Typography variant="h6">
-            <span>Author:</span>
-            <span className="text-teal-500">{product.attributes.author}</span>
-          </Typography>
+      
 
           <Box>
             <Typography variant="h6">
               <span>Price:</span>
-              <span className="font-bold text-red-700">${product.attributes.price}</span>
+              <span className="font-bold text-red-700">${product.price}</span>
             </Typography>
             <div className="flex items-center ">
               <input
@@ -77,7 +74,6 @@ function VewDialog({ open, handleClose, product, handleAddToCart }) {
                 <Button
                   color="success"
                   variant="contained"
-              
                   onClick={handleAddToCartClick}
                 >
                   Add to cart

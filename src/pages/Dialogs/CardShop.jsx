@@ -20,7 +20,7 @@ export default function CardShop({ onClose, open }) {
   };
 
   const calculateTotal = () => {
-    return items.reduce((total, item) => total + item.attributes.price * item.quantity, 0).toFixed(2);
+    return items.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
   };
 
   return (
@@ -66,7 +66,7 @@ export default function CardShop({ onClose, open }) {
                           <li key={product.id} className="flex py-6">
                             <div className="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
                               <img
-                                src={`http://localhost:1337${product.attributes.image.data[0].attributes.url}`}
+                                src={product.image}
                                 className="object-cover object-center w-full h-full"
                               />
                             </div>
@@ -78,7 +78,7 @@ export default function CardShop({ onClose, open }) {
                                     <a href={product.href}>{product.name}</a>
                                   </h3>
                                   <p className="ml-4 text-lime-500">
-                                    ${product.attributes.price}
+                                    ${product.price}
                                   </p>
                                 </div>
                                 <p className="mt-1 text-sm text-gray-500">
@@ -90,7 +90,7 @@ export default function CardShop({ onClose, open }) {
                                   Qty {product.quantity}
                                 </p>
                                 <p className="text-gray-900">
-                                  Total: ${(product.attributes.price * product.quantity).toFixed(2)}
+                                  Total: ${(product.price * product.quantity).toFixed(2)}
                                 </p>
                                 <div className="flex">
                                   <Button

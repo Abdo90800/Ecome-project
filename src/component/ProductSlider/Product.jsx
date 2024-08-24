@@ -2,9 +2,8 @@ import { books } from "../../data/books";
 import ProductSlider from "./ProductSlider";
 import { useGetCartSliceByNameQuery } from "../../Redaux/rtkQuiry/CartSlice";
 function Product() {
-  const { data, error, isLoading } = useGetCartSliceByNameQuery(
-    "products?populate=*"
-  );
+  const { data, error, isLoading } = useGetCartSliceByNameQuery("products");
+  console.log(data);
   if (error) {
     return <div> error...</div>;
   }

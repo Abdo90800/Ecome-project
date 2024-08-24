@@ -22,14 +22,23 @@ function carousel() {
           className="mySwiper rounded-xl"
         >
           <SwiperSlide className="hover:cursor-grab">
-            <img src="../../../public/book5.jpg" alt="Image 1" />
+            <img
+              src="./public/1.jpg"
+              alt="Image 1"
+            />
           </SwiperSlide>
           <SwiperSlide className="hover:cursor-grab">
-            <img src="../../../public/books-109524_1280.jpg" alt="Image 1" />
+            <img
+              src="./public/2.jpg"
+              alt="Image 1"
+            />
           </SwiperSlide>
 
           <SwiperSlide className="hover:cursor-grab">
-            <img src="../../../public/library-1916448_1280.jpg" alt="Image 1" />
+            <img
+              src="../public/pexels-vlada-karpovich-4050388.jpg"
+              alt="Image 1"
+            />
           </SwiperSlide>
         </Swiper>
       </Box>
