@@ -6,7 +6,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import "./style.css";
-
+import imgs1 from "../../img/1.jpg";
+import imgs2 from "../../img/2.jpg";
+import imgs3 from "../../img/3.jpg";
 // import required modules
 import { Pagination } from "swiper/modules";
 import Box from "@mui/material/Box";
@@ -22,23 +24,14 @@ function carousel() {
           className="mySwiper rounded-xl"
         >
           <SwiperSlide className="hover:cursor-grab">
-            <img
-              src="./public/1.jpg"
-              alt="Image 1"
-            />
+            <img src={imgs1} alt="Image 1" />
           </SwiperSlide>
           <SwiperSlide className="hover:cursor-grab">
-            <img
-              src="./public/2.jpg"
-              alt="Image 1"
-            />
+            <img src={imgs2} alt="Image 1" />
           </SwiperSlide>
 
           <SwiperSlide className="hover:cursor-grab">
-            <img
-              src="../public/pexels-vlada-karpovich-4050388.jpg"
-              alt="Image 1"
-            />
+            <img src={imgs3} alt="Image 1" />
           </SwiperSlide>
         </Swiper>
       </Box>
