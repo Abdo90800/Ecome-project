@@ -14,8 +14,10 @@ import VewDialog from "../../pages/Dialogs/VewDialog";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../Redaux/cartslice"; // تأكد من تحديث المسار الصحيح
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 const ProductSlider = ({ data }) => {
+  const matches = useMediaQuery("(max-width:600px)");
+  const matches2 = useMediaQuery("(min-width:600px)");
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const dispatch = useDispatch();
@@ -59,68 +61,136 @@ const ProductSlider = ({ data }) => {
   };
 
   return (
-    <Container className="">
-      <Box sx={{ margin: "10px" }}>
-        <Slider {...settings}>
-          {data.map((product, index) => (
-            <div key={index} className="p-4 w-80 rounded-2xl">
-              <Card
-                style={{
-                  width: "100%",
-                  height: "450px",
-                  objectFit: "contain",
-                  borderRadius: "10px",
-                }}
-                className="p-2"
-              >
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  style={{
-                    objectFit: "contain",
-                    height: "200px",
-                    width: "100%",
-                  }}
-                />
-                <CardContent className="text-center">
-                  <Typography gutterBottom variant="h6" component="div">
-                    {product.title}
-                  </Typography>
+    <>
+      {matches && (
+        <Container className="">
+          <Box sx={{ margin: "10px" }}>
+            <Slider {...settings} className="mb-5">
+              {data.map((product, index) => (
+                <div key={index} className="p-4 w-80 rounded-2xl">
+                  <Card
+                    style={{
+                      width: "100%",
+                      height: "450px",
+                      objectFit: "contain",
+                      borderRadius: "10px",
+                    }}
+                    className="p-"
+                  >
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      style={{
+                        objectFit: "contain",
+                        height: "200px",
+                        width: "100%",
+                      }}
+                    />
+                    <CardContent className="text-center">
+                      <Typography gutterBottom variant="h6" component="div">
+                        {product.title}
+                      </Typography>
 
-                  <Box className="text-center">
-                    <span>
-                      <RatingCard
-                        Rat={product.rating.rat}
-                        reviews={product.rating.count}
-                      />
-                    </span>
-                    <Typography className="text-red-700" variant="h6">
-                      ${product.price}
-                    </Typography>
-                  </Box>
-                </CardContent>
-                <Divider variant="middle" sx={{ borderColor: "black" }} />
+                      <Box className="text-center">
+                        <span>
+                          <RatingCard
+                            Rat={product.rating.rat}
+                            reviews={product.rating.count}
+                          />
+                        </span>
+                        <Typography className="text-red-700" variant="h6">
+                          ${product.price}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                    <Divider variant="middle" sx={{ borderColor: "black" }} />
 
-                <CardActions className="flex items-center justify-center">
-                  <Button onClick={() => handleClickOpen(product)}>
-                    <RemoveRedEyeIcon />
-                  </Button>
-                  <Button onClick={() => handleAddToCart(product)}>
-                    <AddShoppingCartIcon />
-                  </Button>
-                </CardActions>
-              </Card>
-            </div>
-          ))}
-        </Slider>
-      </Box>
-      <VewDialog
-        open={open}
-        handleClose={handleClose}
-        product={selectedProduct}
-        handleAddToCart={handleAddToCart} // تمرير الدالة كـ prop
-      />
-    </Container>
+                    <CardActions className="flex items-center justify-center">
+                      <Button onClick={() => handleClickOpen(product)}>
+                        <RemoveRedEyeIcon />
+                      </Button>
+                      <Button onClick={() => handleAddToCart(product)}>
+                        <AddShoppingCartIcon />
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </div>
+              ))}
+            </Slider>
+          </Box>
+          <VewDialog
+            open={open}
+            handleClose={handleClose}
+            product={selectedProduct}
+            handleAddToCart={handleAddToCart} // تمرير الدالة كـ prop
+          />
+        </Container>
+      )}
+          {matches2 && (
+        <Container className="">
+          <Box sx={{ margin: "10px" }}>
+            <Slider {...settings} className="mb-5">
+              {data.map((product, index) => (
+                <div key={index} className="p-4 w-80 rounded-2xl">
+                  <Card
+                    style={{
+                      width: "100%",
+                      height: "450px",
+                      objectFit: "contain",
+                      borderRadius: "10px",
+                    }}
+                    className="p-"
+                  >
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      style={{
+                        objectFit: "contain",
+                        height: "200px",
+                        width: "100%",
+                      }}
+                    />
+                    <CardContent className="text-center">
+                      <Typography gutterBottom variant="h6" component="div">
+                        {product.title}
+                      </Typography>
+
+                      <Box className="text-center">
+                        <span>
+                          <RatingCard
+                            Rat={product.rating.rat}
+                            reviews={product.rating.count}
+                          />
+                        </span>
+                        <Typography className="text-red-700" variant="h6">
+                          ${product.price}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                    <Divider variant="middle" sx={{ borderColor: "black" }} />
+
+                    <CardActions className="flex items-center justify-center">
+                      <Button onClick={() => handleClickOpen(product)}>
+                        <RemoveRedEyeIcon />
+                      </Button>
+                      <Button onClick={() => handleAddToCart(product)}>
+                        <AddShoppingCartIcon />
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </div>
+              ))}
+            </Slider>
+          </Box>
+          <VewDialog
+            open={open}
+            handleClose={handleClose}
+            product={selectedProduct}
+            handleAddToCart={handleAddToCart} // تمرير الدالة كـ prop
+          />
+        </Container>
+      )}
+    </>
   );
 };
 
